@@ -1,0 +1,13 @@
+### Needed for downstream processing 
+conda create -n commot -c conda-forge python==3.8 r-base==3.6.3 -y
+conda activate commot
+pip install --use-pep517 commot[tradeSeq]==0.0.3
+conda install -c r -c conda-forge r-lattice==0.20_38 r-locfit==1.5_9.4 r-mass==7.3_51.3 pygraphviz -y
+pip install jupyter tornado==6.1
+
+
+### within R
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
+BiocManager::install("tradeSeq")
